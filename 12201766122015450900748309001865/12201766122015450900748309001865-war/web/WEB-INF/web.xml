@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>servlets.loginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewProductsServlet</servlet-name>
+        <servlet-class>servlets.viewProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>manageProductsServlet</servlet-name>
+        <servlet-class>servlets.manageProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewShoppingCartServlet</servlet-name>
+        <servlet-class>servlets.viewShoppingCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>servlets.logoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>XSSFilter</servlet-name>
+        <servlet-class>servlets.XSSFilter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>XssHttpServletRequestWrapper</servlet-name>
+        <servlet-class>servlets.XssHttpServletRequestWrapper</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AntiSqlInjectionfilter</servlet-name>
+        <servlet-class>servlets.AntiSqlInjectionfilter</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewProductsServlet</servlet-name>
+        <url-pattern>/viewProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>manageProductsServlet</servlet-name>
+        <url-pattern>/manageProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewShoppingCartServlet</servlet-name>
+        <url-pattern>/viewShoppingCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>XSSFilter</servlet-name>
+        <url-pattern>/XSSFilter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>XssHttpServletRequestWrapper</servlet-name>
+        <url-pattern>/XssHttpServletRequestWrapper</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet-mapping>
+        <servlet-name>AntiSqlInjectionfilter</servlet-name>
+        <url-pattern>/AntiSqlInjectionfilter</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+<!--solve the xss bug--> 
+    <filter>
+        <filter-name>xssFilter</filter-name>
+        <filter-class>servlets.XSSFilter</filter-class>
+    </filter>  
+    <filter-mapping>
+        <filter-name>xssFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+<!-- defend SQL injection  -->
+    <filter>
+        <filter-name>antiSqlInjection</filter-name>
+        <filter-class>servlets.AntiSqlInjectionfilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>antiSqlInjection</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+</web-app>
